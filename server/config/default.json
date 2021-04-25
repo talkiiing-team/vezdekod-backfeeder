@@ -24,9 +24,13 @@
       "expiresIn": "1d"
     },
     "local": {
-      "usernameField": "email",
+      "usernameField": "username",
       "passwordField": "password"
     }
+  },
+  "adminData": {
+    "username": "ADMIN_USERNAME",
+    "password": "ADMIN_PASSWORD"
   },
   "mongodb": "mongodb://localhost:27017/server"
 }

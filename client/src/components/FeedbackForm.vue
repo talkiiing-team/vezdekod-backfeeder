@@ -4,7 +4,7 @@
   </div>
   <form
     v-if="status !== 201"
-    class="flex flex-col items-center"
+    class="flex flex-col items-center w-max-3xl"
     :class="{
       disabled: loading,
     }"
@@ -51,6 +51,7 @@ import * as models from '@/validation/appeals';
 import api from '@/api';
 
 export default {
+  name: 'FeedbackForm',
   components: {
     VButton,
     VInput,

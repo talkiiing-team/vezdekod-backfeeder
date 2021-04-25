@@ -14,8 +14,10 @@
       :placeholder="placeholder"
       :class="classBind"
     >
-    <small class="h-7 text-red-400 text-left px-6" v-text="modelValue && modelValue.value && error">
-    </small>
+    <small
+      v-if="validationModel"
+      class="h-7 text-red-400 text-left px-6" v-text="modelValue && modelValue.value && error"
+    ></small>
   </div>
 </template>
 
@@ -29,7 +31,7 @@ export default {
   props: {
     type: {
       type: String,
-      validate: (val) => ['tel', 'textarea'].includes(val),
+      validate: (val) => ['tel', 'password', 'date', 'textarea'].includes(val),
       required: false,
     },
     mask: {
@@ -37,7 +39,6 @@ export default {
     },
     placeholder: {
       type: String,
-      required: true,
     },
     modelValue: {
       type: Object,

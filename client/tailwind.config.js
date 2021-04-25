@@ -5,7 +5,11 @@ module.exports = {
     container: {
       center: true,
     },
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        appeals: '1fr 3fr 4fr 3fr 3fr 3fr',
+      },
+    },
   },
   variants: {
     extend: {},
