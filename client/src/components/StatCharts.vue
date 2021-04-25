@@ -38,7 +38,7 @@ export default {
     const createChart = () => {
       // eslint-disable-next-line no-unused-expressions
       currentChart && currentChart.destroy();
-      const dataset = [statTotal.value, statOpened.value, statClosed.value];
+      const dataset = [statTotal.value, statClosed.value, statOpened.value];
       const labels = ['Всего', 'Закрыто', 'Открыто'];
       const label = 'Обращения';
       currentChart = new Chart(chartRef.value, {
