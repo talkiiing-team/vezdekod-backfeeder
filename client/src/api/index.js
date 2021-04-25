@@ -115,9 +115,7 @@ class API {
       if (to) queries.push(`createdAt[$lt]=${inputDateToMillis(to)}`);
     }
     const queryString = queries.join('&');
-    console.log(queryString);
     const { data, status } = await this.axios.get(`/stats${queryString ? `?${queryString}` : ''}`);
-    console.log(data);
     if (status === 200) {
       this.state.stats = data;
     }
@@ -128,7 +126,6 @@ class API {
       status: 'closed',
       answer: msg,
     });
-    console.log(msg, data);
     // eslint-disable-next-line no-underscore-dangle
     const declaration = this.state.appeals.find((v) => v._id === data._id);
     declaration.status = data.status;
