@@ -1,27 +1,13 @@
-// users-model.js - A mongoose model
+// stats-model.js - A mongoose model
 //
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
-const { USER_ROLES } = require('../misc/enums');
-
 module.exports = function (app) {
-  const modelName = 'users';
+  const modelName = 'stats';
   const mongooseClient = app.get('mongooseClient');
-  const schema = new mongooseClient.Schema({
-    username: {
-      type: String,
-      unique: true,
-      required: true,
-    },
-    role: {
-      type: String,
-      default: USER_ROLES.employee,
-      enum: Object.values(USER_ROLES),
-    },
-    password: {
-      type: String,
-      required: true,
-    },
+  const { Schema } = mongooseClient;
+  const schema = new Schema({
+    text: { type: String, required: true },
   }, {
     timestamps: true,
   });

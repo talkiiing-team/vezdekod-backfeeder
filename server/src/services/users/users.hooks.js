@@ -1,18 +1,20 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
-const { disallow } = require('feathers-hooks-common');
+// const { disallow } = require('feathers-hooks-common');
 const {
   hashPassword, protect,
 } = require('@feathersjs/authentication-local').hooks;
 
+const adminOnly = require('../../hooks/admin-only');
+
 module.exports = {
   before: {
-    all: [disallow('external')],
-    find: [ authenticate('jwt') ],
-    get: [ authenticate('jwt') ],
-    create: [ hashPassword('password') ],
-    update: [ hashPassword('password'),  authenticate('jwt') ],
-    patch: [ hashPassword('password'),  authenticate('jwt') ],
-    remove: [ authenticate('jwt') ],
+    all: [],
+    find: [ authenticate('jwt'), adminOnly() ],
+    get: [ authenticate('jwt'), adminOnly() ],
+    create: [ hashPassword('password'), adminOnly() ],
+    update: [ hashPassword('password'),  authenticate('jwt'), adminOnly() ],
+    patch: [ hashPassword('password'),  authenticate('jwt'), adminOnly() ],
+    remove: [ authenticate('jwt'), adminOnly() ],
   },
 
   after: {

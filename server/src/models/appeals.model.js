@@ -3,7 +3,10 @@
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
 
-const { REQUIRED_STRING } = require('../misc/mongoose-helpers');
+const { REQUIRED_STRING, DATE, STRING } = require('../misc/mongoose-helpers');
+const { APPEAL_STATUSES } = require('../misc/enums');
+
+const createAutoIncrement = require('mongoose-sequence');
 
 module.exports = function (app) {
   const modelName = 'appeals';
@@ -15,9 +18,18 @@ module.exports = function (app) {
     patronymic: REQUIRED_STRING,
     phoneNumber: REQUIRED_STRING,
     message: REQUIRED_STRING,
+    status: {
+      ...REQUIRED_STRING,
+      enum: Object.values(APPEAL_STATUSES),
+      default: APPEAL_STATUSES.opened,
+    },
+    answer: STRING,
+    closedAt: DATE,
   }, {
     timestamps: true,
   });
+
+  schema.plugin(createAutoIncrement(mongooseClient), { id: '_id', inc_field: 'altId', disableHooks: true });
 
   // This is necessary to avoid model compilation errors in watch mode
   // see https://mongoosejs.com/docs/api/connection.html#connection_Connection-deleteModel

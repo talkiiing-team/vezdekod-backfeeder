@@ -4,7 +4,7 @@
   </div>
   <form
     v-if="status !== 201"
-    class="flex flex-col items-center"
+    class="flex flex-col items-center w-max-3xl"
     :class="{
       disabled: loading,
     }"
@@ -12,8 +12,8 @@
   >
     <h2>Оставьте заявку</h2>
     <p class="mb-10">и мы обязательно вам ответим</p>
-    <VInput :validation-model="models.lastName" v-model="firstName" placeholder="Фамилия" />
-    <VInput :validation-model="models.firstName" v-model="lastName" placeholder="Имя" />
+    <VInput :validation-model="models.lastName" v-model="lastName" placeholder="Фамилия" />
+    <VInput :validation-model="models.firstName" v-model="firstName" placeholder="Имя" />
     <VInput :validation-model="models.patronymic" v-model="patronymic" placeholder="Отчество" />
     <VInput
       :validation-model="models.phoneNumber"
@@ -51,6 +51,7 @@ import * as models from '@/validation/appeals';
 import api from '@/api';
 
 export default {
+  name: 'FeedbackForm',
   components: {
     VButton,
     VInput,
