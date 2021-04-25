@@ -1,0 +1,57 @@
+@layer utilities {
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+
+  .drag-none {
+    -webkit-user-drag: none;
+  }
+
+  .disabled {
+    @apply opacity-50 pointer-events-none;
+  }
+}
+
+@layer base {
+  html, body {
+    @apply bg-gray-900 h-full scroll-smooth font-light text-white;
+  }
+
+  #app {
+    @apply h-full;
+  }
+
+  img {
+    @apply drag-none select-none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-thin mt-2 mb-5;
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  h6 {
+    @apply text-xl;
+  }
+
+  a {
+    @apply text-green-400 transition-colors duration-200 hover:text-green-300;
+  }
+}
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
