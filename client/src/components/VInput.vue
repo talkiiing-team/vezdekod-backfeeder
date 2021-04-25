@@ -2,6 +2,7 @@
   <div class="w-full flex flex-col">
     <textarea
       @input="handleInput"
+      @change="handleInput"
       v-if="type === 'textarea'"
       :placeholder="placeholder"
       :class="classBind"
@@ -10,6 +11,7 @@
       v-else
       ref="input"
       @input="handleInput"
+      @change="handleInput"
       :type="type"
       :placeholder="placeholder"
       :class="classBind"
