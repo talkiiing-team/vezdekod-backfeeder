@@ -1,19 +1,8 @@
 import axios from 'axios';
 
-// import { ref } from 'vue';
-
-// const createResponseStatus = () => {
-//   const loading = ref(true);
-//   const status = ref();
-//   return {
-//     loading,
-//     status,
-//   };
-// };
-
 class API {
   axios = axios.create({
-    baseURL: 'http://localhost:3030',
+    baseURL: 'https://server.roamiiing.ru/vezdekod/10',
   });
 
   async sendFeedback(feedback) {
